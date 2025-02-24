@@ -14,10 +14,47 @@ async function carregarDados() {
     }
 }
 
+// Função para atualizar os setores
+function atualizarSetorPorCargo() {
+    const cargoSelecionado = document.getElementById("cargo-select").value;
+    const setorSelect = document.getElementById("setor-select");
+
+    // Limpar as opções atuais do setor
+    setorSelect.innerHTML = "";
+
+    // Filtra os funcionários de acordo com o cargo selecionado (se houver)
+    const funcionariosFiltrados = cargoSelecionado === ""
+        ? funcionarios
+        : funcionarios.filter(func => func["Cargo"] === cargoSelecionado);
+
+    // Obtém os setores únicos a partir dos funcionários filtrados
+    const setores = new Set();
+    funcionariosFiltrados.forEach(func => {
+        setores.add(func["Setor"]);
+    });
+
+    // Cria e adiciona as opções no select de setor
+    // Você pode adicionar uma opção vazia para indicar "todos" ou "selecione"
+    const optionVazia = document.createElement("option");
+    optionVazia.value = "";
+    optionVazia.textContent = "Todos";
+    setorSelect.appendChild(optionVazia);
+
+    setores.forEach(setor => {
+        const option = document.createElement("option");
+        option.value = setor;
+        option.textContent = setor;
+        setorSelect.appendChild(option);
+    });
+}
+
+
 // Aqui a função para preencher os selects de filtro
 function popularFiltros() {
     const cargoSelect = document.getElementById("cargo-select");
-    const setorSelect = document.getElementById("setor-select");
+    const setorSelect = document.getElementById("cargo-select").addEventListener("change", () => {
+        atualizarSetorPorCargo();
+    })
     const cargos = new Set();
     const setores = new Set();
 
