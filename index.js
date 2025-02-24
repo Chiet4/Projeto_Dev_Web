@@ -1,5 +1,4 @@
 
-
 let funcionarios = []; 
 // A função abaixo carrega os dados do json
 async function carregarDados() {
@@ -19,8 +18,6 @@ async function carregarDados() {
 function popularFiltros() {
     const cargoSelect = document.getElementById("cargo-select");
     const setorSelect = document.getElementById("setor-select");
-
-
     const cargos = new Set();
     const setores = new Set();
 
@@ -67,8 +64,7 @@ function atualizarTabela(dados) {
     tabelaBody.innerHTML = "";
 
     // Obter colunas selecionadas pelos checkboxes
-    const colunasSelecionadas = Array.from(document.querySelectorAll(".filter:checked"))
-                                     .map(input => input.value);
+    const colunasSelecionadas = Array.from(document.querySelectorAll(".filter:checked")).map(input => input.value);
 
     // Criar cabeçalho da tabela
     const headerRow = document.createElement("tr");
@@ -113,7 +109,6 @@ function converterParaNumero(valor) {
     }
     return valor || 0;
 }
-
 
 
 // Função para calcular estatísticas
@@ -182,13 +177,11 @@ function calcularEstatisticas(dados) {
 }
 
 
-
 // Adicionar os eventos no HTML
 document.getElementById("aplicar-filtros").addEventListener("click", filtrarDados);
 document.querySelectorAll(".filter").forEach(checkbox => {
     checkbox.addEventListener("change", () => filtrarDados());
 });
-
 
 
 // Chamada inicial para carregar os dados ao abrir a página
