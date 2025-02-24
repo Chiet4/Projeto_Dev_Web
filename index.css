@@ -62,6 +62,8 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
+  background-color: #f9f9f987; 
+  font-family: Arial, sans-serif;
 }
 
 th,
@@ -71,8 +73,8 @@ td {
   border: 1px solid #ddd;
 }
 
-th {
-  background-color: #f4f4f9;
+table tr:hover {
+  background-color: #a8f1f1;
 }
 
 p {

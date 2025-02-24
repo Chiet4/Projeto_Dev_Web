@@ -23,8 +23,7 @@ function atualizarSetorPorCargo() {
     setorSelect.innerHTML = "";
 
     // Filtra os funcionários de acordo com o cargo selecionado (se houver)
-    const funcionariosFiltrados = cargoSelecionado === ""
-        ? funcionarios
+    const funcionariosFiltrados = cargoSelecionado === "" ? funcionarios
         : funcionarios.filter(func => func["Cargo"] === cargoSelecionado);
 
     // Obtém os setores únicos a partir dos funcionários filtrados
@@ -180,7 +179,6 @@ function calcularEstatisticas(dados) {
     const percentualDescontoMedio = totalProventos > 0 ? (totalDescontos / totalProventos) * 100 : 0;
 
     // Atualizando o HTML com os valores corrigidos
-    document.getElementById("total-setor").textContent = totalSetor;
     document.getElementById("num-funcionarios").textContent = totalSetor;
     document.getElementById("media-salarial").textContent = mediaSalarial.toLocaleString("pt-BR", {
         style: "currency", currency: "BRL"
